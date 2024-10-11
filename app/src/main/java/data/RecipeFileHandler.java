@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -22,11 +25,31 @@ public class RecipeFileHandler {
      * @return レシピデータ
      */
     public ArrayList<String> readRecipes() {
-        // try {
+        try {
+            
+            File filePath = new File("app/src/main/resources/recipes.txt");
+            if (filePath.exists()) {
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
+                String line = reader.readLine();
+                if (line != null) {
+                    String[] data = line.split(",");
+                    
+                }else if (line == null) {
+                    System.out.println("データなし");
+                    
+                }
+                
+                
+                // reader.close();
+                // for(String filepath :filePath){
+                    
+                // }
+            } 
+            // return ArrayList<>();
 
-        // } catch (IOException e) {
-        //     System.out.println("Error reading file:" + e.getMessage());
-        // }
+        } catch (IOException e) {
+            System.out.println("Error reading file:" + e.getMessage());
+        }
         return null;
     }
 

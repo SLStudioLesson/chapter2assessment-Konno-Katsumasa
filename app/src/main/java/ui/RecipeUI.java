@@ -37,6 +37,14 @@ public class RecipeUI {
                 switch (choice) {
                     case "1":
                         // 設問1: 一覧表示機能
+                        // RecipeFileHandler rfh = new RecipeFileHandler();
+
+                        // data.RecipeFileHandler drfh = new data.RecipeFileHandler();
+                        // drfh.readRecipes();
+
+                        // ArrayList<String> fileHandler = new ArrayList<>();
+                        displayRecipes();
+
                         break;
                     case "2":
                         // 設問2: 新規登録機能
@@ -62,7 +70,18 @@ public class RecipeUI {
      * RecipeFileHandlerから読み込んだレシピデータを整形してコンソールに表示します。
      */
     private void displayRecipes() {
+        fileHandler = new RecipeFileHandler();
+        ArrayList<String> list = new ArrayList<String>();
+        list = fileHandler.readRecipes();
+        // list.get(fileHandler.readRecipes());
+        if (list != null) {
+            for (String filehand : list) {
+                System.out.println(filehand);
+            }
+        } else if (list == null) {
+            System.out.println("No recipes available.");
 
+        }
     }
 
     /**
@@ -86,4 +105,3 @@ public class RecipeUI {
     }
 
 }
-
