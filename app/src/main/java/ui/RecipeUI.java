@@ -70,18 +70,25 @@ public class RecipeUI {
      * RecipeFileHandlerから読み込んだレシピデータを整形してコンソールに表示します。
      */
     private void displayRecipes() {
-        fileHandler = new RecipeFileHandler();
+        // レシピデータの保存先（箱）を作る
         ArrayList<String> list = new ArrayList<String>();
+        // recipesListを受け取る
         list = fileHandler.readRecipes();
-        // list.get(fileHandler.readRecipes());
-        if (list != null) {
-            for (String filehand : list) {
-                System.out.println(filehand);
-            }
-        } else if (list == null) {
-            System.out.println("No recipes available.");
+        // Tomato Soup,Tomatoes, Onion, Garlic, Vegetable Stock
+        // リストから1つずつ取り出す
+        System.out.println("Recipes:");
+        System.out.println("-----------------------------------");
+        for (String item : list) {
 
+            String[] strs = item.split(",", 2);
+
+            System.out.println("Recipe Name: " + strs[0]);
+            System.out.println("Main Ingredients: " + strs[1]);
+            System.out.println("-----------------------------------");
         }
+
+        // ","で分割する
+
     }
 
     /**
@@ -91,7 +98,11 @@ public class RecipeUI {
      * @throws java.io.IOException 入出力が受け付けられない
      */
     private void addNewRecipe() throws IOException {
-
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter recipe name: ");
+            String input1 = reader.readLine();
+            System.out.println("Enter main ingredients (comma separated): ");
+            String input2 = reader.readLine();
     }
 
     /**
