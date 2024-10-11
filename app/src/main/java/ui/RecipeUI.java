@@ -48,6 +48,10 @@ public class RecipeUI {
                         break;
                     case "2":
                         // 設問2: 新規登録機能
+                        addNewRecipe();
+                        fileHandler.addRecipe(input1,input2);
+
+
                         break;
                     case "3":
                         // 設問3: 検索機能
@@ -97,12 +101,16 @@ public class RecipeUI {
      *
      * @throws java.io.IOException 入出力が受け付けられない
      */
+    String input1 = "";
+    String input2 = "";
     private void addNewRecipe() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Enter recipe name: ");
-            String input1 = reader.readLine();
-            System.out.println("Enter main ingredients (comma separated): ");
-            String input2 = reader.readLine();
+            System.out.print("Enter recipe name: ");
+             input1 = reader.readLine();
+            System.out.print("Enter main ingredients (comma separated): ");
+             input2 = reader.readLine();
+             System.out.println("Recipe added successfully.");
+            //新しいレシピ（名前　input1）と（材料　input2）←recipeName,ingredient
     }
 
     /**
